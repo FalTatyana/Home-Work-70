@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -9,6 +9,6 @@ const Header = () => {
       </div>
     </nav>
   )
-}
+};
 
-export default Header
+export default Header;

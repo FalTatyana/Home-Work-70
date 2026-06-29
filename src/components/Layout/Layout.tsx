@@ -1,17 +1,17 @@
-import type { PropsWithChildren } from "react"
-import Header from "../Header/Header"
+import type { PropsWithChildren } from "react";
+import Header from "../Header/Header";
 
-const Layout = ({children}: PropsWithChildren) => {
+const Layout = ({ children }: PropsWithChildren) => {
   return (
     <>
-    <header>
-      <Header/>
-    </header>
-    <main className="container mt-4">
-      {children}
-    </main>
+      <header>
+        <Header />
+      </header>
+      <main className="container mt-4">
+        {children}
+      </main>
     </>
   )
-}
+};
 
-export default Layout
+export default Layout;

@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 interface Props {
     name: string
@@ -9,7 +9,7 @@ interface Props {
     onClose: () => void
     handleDelete: () => void
     id: string
-}
+};
 
 const Modal = ({ name, number, mail, img, isOpen, onClose, handleDelete, id }: Props) => {
 
@@ -77,4 +77,4 @@ const Modal = ({ name, number, mail, img, isOpen, onClose, handleDelete, id }: P
     )
 };
 
-export default Modal
+export default Modal;

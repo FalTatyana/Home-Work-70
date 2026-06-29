@@ -12,12 +12,22 @@ const ContactList = () => {
 
   const dispatch = useDispatch<AppDispatch>();
   const contacts = useSelector((state: RootState) => state.contacts.contacts);
+  const loading = useSelector(
+    (state: RootState) => state.contacts.loading
+  );
 
   useEffect(() => {
     dispatch(fetchContact());
   }, [dispatch]);
 
+  if (loading) {
+    return <h3>Loading...</h3>;
+  }
+
   const showContactInfo = (contact: Contact) => {
+    if (loading) {
+      return <h3>Loading...</h3>;
+    }
     setClickedContact(contact);
     setIsOpen(true);
   };
@@ -26,7 +36,7 @@ const ContactList = () => {
     setIsOpen(false);
   };
 
-  const handleDelete = async() => {
+  const handleDelete = async () => {
     if (!clickedContact) return;
     await dispatch(deleteContact(clickedContact.id))
     setIsOpen(false);
@@ -65,13 +75,13 @@ const ContactList = () => {
           mail={clickedContact.mail}
           img={clickedContact.img}
           isOpen={isOpen}
-          onClose={closeModal} 
-          handleDelete={handleDelete}   
-          id={clickedContact.id}       
+          onClose={closeModal}
+          handleDelete={handleDelete}
+          id={clickedContact.id}
         />
       )}
     </>
   )
-}
+};
 
 export default ContactList

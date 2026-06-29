@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import FormContact from "../FormContact/FormContact"
+import FormContact from "../FormContact/FormContact";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../app/store";
 
@@ -11,13 +11,13 @@ const EditContact = () => {
 
   if (!contactToEdit) {
     return <h3>Loading...</h3>;
-}
-  
+  }
+
   return (
     <>
-    <FormContact isEdit={true} contact={contactToEdit}/>
+      <FormContact isEdit={true} contact={contactToEdit} />
     </>
   )
-}
+};
 
-export default EditContact
+export default EditContact;

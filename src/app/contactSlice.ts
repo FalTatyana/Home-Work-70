@@ -8,12 +8,12 @@ export interface Contact {
   mail: string;
   number: string;
   name: string;
-}
+};
 
 interface ContactsState {
   contacts: Contact[];
   loading: boolean;
-}
+};
 
 const initialState: ContactsState = {
   contacts: [],

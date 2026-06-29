@@ -3,11 +3,12 @@ import { addContact, fetchContact, type Contact, editContact } from "../../app/c
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import type { AppDispatch } from "../../app/store";
+import { toast } from "react-toastify";
 
 interface Props {
     isEdit?: boolean
     contact?: Contact
-}
+};
 
 const FormContact = ({ isEdit = false, contact }: Props) => {
 
@@ -40,19 +41,28 @@ const FormContact = ({ isEdit = false, contact }: Props) => {
             await dispatch(editContact(form))
             navigate("/");
             return;
-        }
+        };
+
+        if (
+            !form.img.trim() ||
+            !form.mail.trim() ||
+            !form.name.trim() ||
+            !form.number.trim()) {
+            toast.error('Enter all data')
+            return;
+        };
 
         const newContact = {
             name: form.name,
             number: form.number,
             mail: form.mail,
             img: form.img,
-        }
+        };
 
         await dispatch(addContact(newContact));
         await dispatch(fetchContact());
         navigate("/");
-    }
+    };
 
     return (
         <form onSubmit={handleSubmit}>
@@ -107,10 +117,32 @@ const FormContact = ({ isEdit = false, contact }: Props) => {
                     value={form.img}
                 />
             </div>
-            <button type="submit" className="btn btn-outline-success me-3">Save</button> 
+            <p>Photo Preview</p>
+            <div
+                style={{
+                    height: 100,
+                    width: 100,
+                    border: "1px solid grey",
+                    borderRadius: 10
+                }}
+                className="mb-2">
+                {form.img
+                    ?
+                    <img
+                        src={form.img}
+                        alt="img"
+                        style={{ height: 98, width: 98, borderRadius: 10 }} />
+                    :
+                    <img
+                        src="https://m.media-amazon.com/images/I/71exISXLWiL.jpg"
+                        alt="img"
+                        style={{ height: 98, width: 98, borderRadius: 10 }} />
+                }
+            </div>
+            <button type="submit" className="btn btn-outline-success me-3">Save</button>
             <NavLink to={'/'} type="button" className="btn btn-outline-primary">Back to contacts</NavLink>
         </form>
     )
-}
+};
 
-export default FormContact
+export default FormContact;

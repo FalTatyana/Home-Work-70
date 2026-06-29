@@ -1,8 +1,8 @@
-import { Route, Routes } from 'react-router-dom'
-import Layout from './components/Layout/Layout'
-import ContactList from './components/ContactList/ContactList'
-import EditContact from './components/EditContact/EditContact'
-import FormContact from './components/FormContact/FormContact'
+import { Route, Routes } from 'react-router-dom';
+import Layout from './components/Layout/Layout';
+import ContactList from './components/ContactList/ContactList';
+import EditContact from './components/EditContact/EditContact';
+import FormContact from './components/FormContact/FormContact';
 
 function App() {
 
@@ -15,6 +15,6 @@ function App() {
       </Routes>
     </Layout>
   )
-}
+};
 
-export default App
+export default App;

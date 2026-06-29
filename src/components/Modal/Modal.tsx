@@ -1,16 +1,19 @@
+import { NavLink, useNavigate } from "react-router-dom"
+
 interface Props {
     name: string
-    number: number
+    number: string
     mail: string
     img: string
     isOpen: boolean
     onClose: () => void
     handleDelete: () => void
+    id: string
 }
 
-const Modal = ({ name, number, mail, img, isOpen, onClose, handleDelete }: Props) => {
+const Modal = ({ name, number, mail, img, isOpen, onClose, handleDelete, id }: Props) => {
 
-
+    const navigate = useNavigate();
 
     return (
         <>
@@ -42,14 +45,29 @@ const Modal = ({ name, number, mail, img, isOpen, onClose, handleDelete }: Props
                                     </div>
                                     <div className="col-md-10 ms-3">
                                         <p className="modal-title">Name: <b>{name}</b></p>
-                                        <p className="mt-2 mb-0"><i className="bi bi-telephone-fill me-2"></i> {number}</p>
-                                        <p className="m-0"><i className="bi bi-envelope-fill me-2"></i> {mail}</p>
+                                        <p className="mt-2 mb-0"><i className="bi bi-telephone text-success me-2"></i> {number}</p>
+                                        <p className="m-0"><i className="bi bi-envelope text-success me-2"></i> {mail}</p>
                                     </div>
                                 </div>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Edit</button>
-                                <button onClick={handleDelete} type="button" className="btn btn-primary">Delete</button>
+                                <button
+                                    type="button"
+                                    className="btn btn-outline-primary"
+                                    data-bs-dismiss="modal"
+                                    onClick={() => {
+                                        onClose();
+                                        navigate(`/edit-contact/${id}`);
+                                    }}
+                                >
+                                    Edit
+                                </button>
+                                <button
+                                    onClick={handleDelete}
+                                    type="button"
+                                    className="btn btn-outline-danger">
+                                    Delete
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -57,6 +75,6 @@ const Modal = ({ name, number, mail, img, isOpen, onClose, handleDelete }: Props
             )}
         </>
     )
-}
+};
 
 export default Modal

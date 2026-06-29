@@ -40,7 +40,7 @@ const ContactList = () => {
           onClick={() => showContactInfo(contact)}
           key={contact.id}
           className="card mb-3 contactCard"
-          style={{ maxWidth: 500 }}>
+          style={{ maxWidth: 500, cursor: 'pointer' }}>
           <div className="d-flex align-items-center">
             <div className="col-md-2">
               <img
@@ -66,7 +66,8 @@ const ContactList = () => {
           img={clickedContact.img}
           isOpen={isOpen}
           onClose={closeModal} 
-          handleDelete={handleDelete}          
+          handleDelete={handleDelete}   
+          id={clickedContact.id}       
         />
       )}
     </>
